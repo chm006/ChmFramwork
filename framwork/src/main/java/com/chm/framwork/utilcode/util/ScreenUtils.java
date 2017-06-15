@@ -1,5 +1,6 @@
 package com.chm.framwork.utilcode.util;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.KeyguardManager;
 import android.content.Context;
@@ -97,6 +98,7 @@ public final class ScreenUtils {
      * @param activity activity
      * @return 屏幕旋转角度
      */
+    @SuppressLint("SwitchIntDef")
     public static int getScreenRotation(Activity activity) {
         switch (activity.getWindowManager().getDefaultDisplay().getRotation()) {
             default:

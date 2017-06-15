@@ -334,6 +334,7 @@ public final class PhoneUtils {
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>}</p>
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.READ_SMS"/>}</p>
      */
+    @SuppressLint("SdCardPath")
     public static void getAllSMS() {
         // 1.获取短信
         // 1.1获取内容解析者
@@ -346,8 +347,9 @@ public final class PhoneUtils {
         // selection : 查询的条件
         // selectionArgs : 查询条件的参数
         // sortOrder : 排序
-        Cursor cursor = resolver.query(uri, new String[]{"address", "date", "type", "body"}, null, null, null);
+        @SuppressLint("Recycle") Cursor cursor = resolver.query(uri, new String[]{"address", "date", "type", "body"}, null, null, null);
         // 设置最大进度
+        assert cursor != null;
         int count = cursor.getCount();//获取短信的个数
         // 2.备份短信
         // 2.1获取xml序列器

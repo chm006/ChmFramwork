@@ -2,18 +2,25 @@ package com.chm.chmframwork;
 
 import android.app.Application;
 
+import com.chm.chmframwork.bean.FragmentBean;
+import com.chm.framwork.utilcode.util.Utils;
+
 import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
 
 /**
  * Application
- * Created by YoKey on 16/11/23.
+ * Created by chenmin on 2017/6/5.
  */
 public class App extends Application {
+    //从fragment（文件夹）跳转到ui（文件夹），暂存的fragment
+    public static FragmentBean fragmentBean;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Utils.init(this);
 
         // 栈视图功能，大大降低Fragment的开发难度，建议在Application里初始化
         Fragmentation.builder()
@@ -32,11 +39,5 @@ public class App extends Application {
                     }
                 })
                 .install();
-
-        // init EventBus Index  建议配合build.gradle里apt{}开启
-//        EventBus.builder()
-//                .addIndex(new EventBusIndex())
-//                .logNoSubscriberMessages(false)
-//                .installDefaultEventBus();
     }
 }

@@ -47,6 +47,7 @@ public final class NetworkUtils {
      * 打开网络设置界面
      * <p>3.0以下打开设置界面</p>
      */
+    @SuppressLint("ObsoleteSdkInt")
     public static void openWirelessSettings() {
         if (android.os.Build.VERSION.SDK_INT > 10) {
             Utils.getContext().startActivity(new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
