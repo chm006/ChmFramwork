@@ -2,6 +2,8 @@ package com.chm.chmframwork;
 
 import android.app.Application;
 
+import com.chm.framwork.utilcode.util.Utils;
+
 import me.yokeyword.fragmentation.Fragmentation;
 import me.yokeyword.fragmentation.helper.ExceptionHandler;
 
@@ -14,6 +16,8 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        Utils.init(this);
 
         // 栈视图功能，大大降低Fragment的开发难度，建议在Application里初始化
         Fragmentation.builder()

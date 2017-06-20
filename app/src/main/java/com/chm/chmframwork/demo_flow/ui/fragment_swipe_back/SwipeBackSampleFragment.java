@@ -24,7 +24,7 @@ public class SwipeBackSampleFragment extends SwipeBackFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_swipe_back, container, false);
+        View view = inflater.inflate(R.layout.flow_fragment_swipe_back, container, false);
 
         if (mListener != null) {
             mListener.onLockDrawLayout(true);

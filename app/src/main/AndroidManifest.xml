@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!--网络访问权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".App"
@@ -25,6 +27,10 @@
             android:name=".demo_flow.MainActivity"
             android:launchMode="singleTask" />
 
+        <activity
+            android:name=".demo_flow.SwipeBackSampleActivity"
+            android:theme="@style/AppTheme.NoActionBar.SwipeBack" />
+
         <activity android:name=".demo_wechat.MainActivity" />
 
         <activity
@@ -32,8 +38,9 @@
             android:launchMode="singleTask" />
 
         <activity
-            android:name=".demo_flow.SwipeBackSampleActivity"
-            android:theme="@style/AppTheme.NoActionBar.SwipeBack" />
+            android:name=".home.MainActivity"
+            android:launchMode="singleTask" />
+
     </application>
 
 </manifest>

@@ -55,7 +55,7 @@ public class MenuListFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_list_menu, container, false);
+        View view = inflater.inflate(R.layout.f_z_fragment_list_menu, container, false);
         initView(view);
         return view;
     }

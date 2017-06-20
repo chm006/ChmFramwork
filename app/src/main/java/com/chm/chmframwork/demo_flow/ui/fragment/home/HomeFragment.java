@@ -57,7 +57,7 @@ public class HomeFragment extends BaseMainFragment implements Toolbar.OnMenuItem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.flow_fragment_home, container, false);
 
         initView(view);
 
@@ -77,7 +77,7 @@ public class HomeFragment extends BaseMainFragment implements Toolbar.OnMenuItem
         mFab = (FloatingActionButton) view.findViewById(R.id.fab);
         mRecy = (RecyclerView) view.findViewById(R.id.recy);
 
-        mToolbar.setTitle(R.string.home);
+        mToolbar.setTitle("首页");
         initToolbarNav(mToolbar, true);
         mToolbar.inflateMenu(R.menu.home);
         mToolbar.setOnMenuItemClickListener(this);

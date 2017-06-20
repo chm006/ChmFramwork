@@ -1,9 +1,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
+    <!--侧边栏的渐变色-->
     <gradient
         android:angle="135"
-        android:centerColor="#3F51B5"
-        android:endColor="#283593"
-        android:startColor="#7986CB"
+        android:centerColor="#82d182"
+        android:endColor="#6fd26f"
+        android:startColor="#c5d6c5"
         android:type="linear" />
 </shape>

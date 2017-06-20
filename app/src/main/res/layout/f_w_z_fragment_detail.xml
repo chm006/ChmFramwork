@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <include layout="@layout/content_detail" />
+        <include layout="@layout/f_z_content_detail" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab"

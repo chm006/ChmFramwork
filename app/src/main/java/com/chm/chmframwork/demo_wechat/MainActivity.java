@@ -33,7 +33,7 @@ public class MainActivity extends SupportActivity {
 
             @Override
             public void onFragmentSupportVisible(SupportFragment fragment) {
-                Log.i("MainActivity", "onFragmentSupportVisible--->" + fragment.getClass().getSimpleName());
+                Log.i("MainActivity2", "onFragmentSupportVisible--->" + fragment.getClass().getSimpleName());
             }
 
             @Override

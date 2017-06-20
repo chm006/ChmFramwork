@@ -56,7 +56,7 @@ public class ContentFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_content, container, false);
+        View view = inflater.inflate(R.layout.f_z_fragment_content, container, false);
         initView(view);
         return view;
     }

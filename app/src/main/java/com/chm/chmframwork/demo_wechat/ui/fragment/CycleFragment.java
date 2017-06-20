@@ -44,7 +44,7 @@ public class CycleFragment extends BaseBackFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_cycle, container, false);
+        View view = inflater.inflate(R.layout.f_w_z_fragment_cycle, container, false);
         initView(view);
         return attachToSwipeBack(view);
     }

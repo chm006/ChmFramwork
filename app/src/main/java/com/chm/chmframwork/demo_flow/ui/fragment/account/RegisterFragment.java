@@ -46,7 +46,7 @@ public class RegisterFragment extends BaseBackFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_register, container, false);
+        View view = inflater.inflate(R.layout.flow_fragment_register, container, false);
         initView(view);
         return view;
     }
@@ -60,7 +60,7 @@ public class RegisterFragment extends BaseBackFragment {
 
         showSoftInput(mEtAccount);
 
-        toolbar.setTitle(R.string.register);
+        toolbar.setTitle("登陆");
         initToolbarNav(toolbar);
 
         mBtnRegister.setOnClickListener(new View.OnClickListener() {

@@ -35,7 +35,7 @@ public class PagerAdapter extends RecyclerView.Adapter<PagerAdapter.MyViewHolder
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_pager, parent, false);
+        View view = mInflater.inflate(R.layout.f_w_item_pager, parent, false);
         final MyViewHolder holder = new MyViewHolder(view);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

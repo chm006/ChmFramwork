@@ -39,7 +39,7 @@
                     android:id="@+id/et_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password"
+                    android:hint="密码"
                     android:imeActionId="@+id/login"
                     android:imeActionLabel="登录"
                     android:imeOptions="actionUnspecified"
@@ -49,29 +49,31 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/et_password_confirm"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="确认密码"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/btn_register"
-                style="?android:textAppearanceSmall"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/register"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_register"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="注册"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_login"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:text="登录"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

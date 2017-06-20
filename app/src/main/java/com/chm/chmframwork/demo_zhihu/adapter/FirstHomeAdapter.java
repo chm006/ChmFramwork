@@ -32,7 +32,7 @@ public class FirstHomeAdapter extends RecyclerView.Adapter<FirstHomeAdapter.VH> 
 
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_zhihu_home_first, parent, false);
+        View view = mInflater.inflate(R.layout.zhihu_item_home_first, parent, false);
         final VH holder = new VH(view);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

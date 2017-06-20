@@ -34,7 +34,7 @@ public class ShopFragment extends BaseMainFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_shop, container, false);
+        View view = inflater.inflate(R.layout.f_z_fragment_shop, container, false);
         initView(view, savedInstanceState);
         return view;
     }

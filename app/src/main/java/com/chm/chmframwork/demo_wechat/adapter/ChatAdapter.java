@@ -45,7 +45,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.VH> {
 
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_wechat_chat, parent, false);
+        View view = mInflater.inflate(R.layout.wechat_item_chat, parent, false);
         final VH holder = new VH(view);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

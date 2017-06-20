@@ -37,7 +37,7 @@ public class MsgAdapter extends RecyclerView.Adapter<MsgAdapter.VH> {
 
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_wechat_msg, parent, false);
+        View view = mInflater.inflate(R.layout.wechat_item_msg, parent, false);
         final VH holder = new VH(view);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

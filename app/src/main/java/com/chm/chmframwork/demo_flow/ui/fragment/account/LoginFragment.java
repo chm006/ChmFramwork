@@ -47,7 +47,7 @@ public class LoginFragment extends BaseBackFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_login, container, false);
+        View view = inflater.inflate(R.layout.flow_fragment_login, container, false);
 
         initView(view);
 
@@ -61,7 +61,7 @@ public class LoginFragment extends BaseBackFragment {
         mBtnLogin = (Button) view.findViewById(R.id.btn_login);
         mBtnRegister = (Button) view.findViewById(R.id.btn_register);
 
-        toolbar.setTitle(R.string.login);
+        toolbar.setTitle("登陆");
         initToolbarNav(toolbar);
 
         mBtnLogin.setOnClickListener(new View.OnClickListener() {

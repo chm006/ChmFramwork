@@ -43,7 +43,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.item_menu, parent, false);
+        View view = mInflater.inflate(R.layout.f_z_item_menu, parent, false);
         final MyViewHolder holder = new MyViewHolder(view);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

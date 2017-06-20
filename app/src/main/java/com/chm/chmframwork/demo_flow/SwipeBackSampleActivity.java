@@ -18,7 +18,7 @@ public class SwipeBackSampleActivity extends SwipeBackActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_swipe_back);
+        setContentView(R.layout.flow_activity_swipe_back);
 
         if (savedInstanceState == null) {
             loadRootFragment(R.id.fl_container, FirstSwipeBackFragment.newInstance());

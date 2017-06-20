@@ -26,7 +26,7 @@ public class DiscoverFragment extends BaseMainFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_discover, container, false);
+        View view = inflater.inflate(R.layout.flow_fragment_discover, container, false);
 
         initView(view);
 
@@ -41,9 +41,9 @@ public class DiscoverFragment extends BaseMainFragment {
         mToolbar.setTitle("发现");
         initToolbarNav(mToolbar);
 
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.recommend));
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.hot));
-        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.favorite));
+        mTabLayout.addTab(mTabLayout.newTab().setText("推荐"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("热门"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("收藏"));
         mViewPager.setAdapter(new DiscoverFragmentAdapter(getChildFragmentManager()));
         mTabLayout.setupWithViewPager(mViewPager);
     }

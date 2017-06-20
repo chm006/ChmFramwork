@@ -32,7 +32,7 @@ public class RecyclerSwipeBackFragment extends BaseSwipeBackFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_swipe_back_recy, container, false);
+        View view = inflater.inflate(R.layout.flow_fragment_swipe_back_recy, container, false);
 
         initView(view);
 

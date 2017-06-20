@@ -13,6 +13,7 @@
         android:layout_weight="1">
 
         <ImageView
+            android:id="@+id/iv_btn_main"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="center"

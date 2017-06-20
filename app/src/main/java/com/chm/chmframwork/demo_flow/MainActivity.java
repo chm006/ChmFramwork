@@ -49,7 +49,7 @@ public class MainActivity extends SupportActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.flow_activity_main);
 
         if (savedInstanceState == null) {
             loadRootFragment(R.id.fl_container, HomeFragment.newInstance());
@@ -62,7 +62,7 @@ public class MainActivity extends SupportActivity
 
             @Override
             public void onFragmentCreated(SupportFragment fragment, Bundle savedInstanceState) {
-                Log.i("MainActivity", "onFragmentCreated--->" + fragment.getClass().getSimpleName());
+                Log.i("MainActivity2", "onFragmentCreated--->" + fragment.getClass().getSimpleName());
             }
         });
     }
