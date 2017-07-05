@@ -3,6 +3,7 @@ package com.chm.chmframwork.home.ui.fragment.two.child;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,14 +12,20 @@ import android.view.ViewGroup;
 import com.chm.chmframwork.R;
 import com.chm.chmframwork.home.adapter.PagerFragmentAdapter;
 import com.chm.chmframwork.home.base.BaseFragment;
+import com.chm.chmframwork.home.ui.fragment.two.child.childpager.BroadCastPagerFragment;
+import com.chm.chmframwork.home.ui.fragment.two.child.childpager.ProviderPagerFragment;
+import com.chm.chmframwork.home.ui.fragment.two.child.childpager.ServicePagerFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 顶端分类切换
  * Created by chenmin on 2017/6/22.
  */
 public class ViewPagerFragment extends BaseFragment {
-    private TabLayout mTab;
-    private ViewPager mViewPager;
+    private String[] pageTitles;
+    private List<Fragment> fragments;
 
     public static ViewPagerFragment newInstance() {
 
@@ -33,19 +40,33 @@ public class ViewPagerFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_view_pager, container, false);
+        initData();
         initView(view);
         return view;
     }
 
+    private void initData() {
+        pageTitles = new String[]{"Service", "ContentProvider", "BroadCastReceiver"};
+        fragments = new ArrayList<>();
+
+        fragments.add(ServicePagerFragment.newInstance(pageTitles[0]));
+        fragments.add(ProviderPagerFragment.newInstance());
+        fragments.add(BroadCastPagerFragment.newInstance(pageTitles[2]));
+    }
+
     private void initView(View view) {
-        mTab = (TabLayout) view.findViewById(R.id.tab);
-        mViewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        TabLayout tab = (TabLayout) view.findViewById(R.id.tab);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager);
 
-        mTab.addTab(mTab.newTab());
-        mTab.addTab(mTab.newTab());
-        mTab.addTab(mTab.newTab());
+        /*for (int i = 0; i < fragments.size(); i++) {
+            tab.addTab(tab.newTab());
+        }*/
 
-        mViewPager.setAdapter(new PagerFragmentAdapter(getChildFragmentManager()));
-        mTab.setupWithViewPager(mViewPager);
+        PagerFragmentAdapter adapter = new PagerFragmentAdapter(
+                getChildFragmentManager(), pageTitles, fragments);
+        //viewpager加载adapter
+        viewPager.setAdapter(adapter);
+        //TabLayout加载viewpager
+        tab.setupWithViewPager(viewPager);
     }
 }

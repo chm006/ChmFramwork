@@ -11,18 +11,18 @@ import com.chm.chmframwork.R;
 import com.chm.chmframwork.home.base.BaseFragment;
 
 /**
- * Created by chenmin on 2017/6/22.
+ * Created by chm00 on 2017/7/5.
  */
-public class OtherPagerFragment extends BaseFragment {
+public class ServicePagerFragment extends BaseFragment {
     private static final String ARG_TYPE = "arg_pos";
 
     private String desc;
 
-    public static OtherPagerFragment newInstance(String desc) {
+    public static ServicePagerFragment newInstance(String desc) {
 
         Bundle args = new Bundle();
         args.putString(ARG_TYPE, desc);
-        OtherPagerFragment fragment = new OtherPagerFragment();
+        ServicePagerFragment fragment = new ServicePagerFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -36,7 +36,7 @@ public class OtherPagerFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_other_pager, container, false);
+        View view = inflater.inflate(R.layout.fragment_service_pager, container, false);
         initView(view);
         return view;
     }
