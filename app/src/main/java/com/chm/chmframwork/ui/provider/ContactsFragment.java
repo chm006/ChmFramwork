@@ -1,4 +1,4 @@
-package com.chm.chmframwork.fragment.two.childpager.provider;
+package com.chm.chmframwork.ui.provider;
 
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
@@ -64,7 +64,7 @@ public class ContactsFragment extends BaseBackFragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start(AddContactsFragment.newInstance());
+                startFragment(AddContactsFragment.newInstance());
             }
         });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

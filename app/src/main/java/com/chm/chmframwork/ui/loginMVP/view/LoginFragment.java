@@ -1,4 +1,4 @@
-package com.chm.chmframwork.fragment.four.loginMVP.view;
+package com.chm.chmframwork.ui.loginMVP.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,8 +12,8 @@ import android.widget.ProgressBar;
 
 import com.chm.chmframwork.R;
 import com.chm.chmframwork.base.BaseBackFragment;
-import com.chm.chmframwork.fragment.four.loginMVP.bean.User;
-import com.chm.chmframwork.fragment.four.loginMVP.presenter.UserLoginPresenter;
+import com.chm.chmframwork.ui.loginMVP.bean.User;
+import com.chm.chmframwork.ui.loginMVP.presenter.UserLoginPresenter;
 import com.chm.framwork.utilcode.util.ToastUtils;
 
 /**

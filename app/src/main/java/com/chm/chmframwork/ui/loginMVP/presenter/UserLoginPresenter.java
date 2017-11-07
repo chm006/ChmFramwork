@@ -1,11 +1,11 @@
-package com.chm.chmframwork.fragment.four.loginMVP.presenter;
+package com.chm.chmframwork.ui.loginMVP.presenter;
 
 import android.os.Handler;
 
-import com.chm.chmframwork.fragment.four.loginMVP.bean.User;
-import com.chm.chmframwork.fragment.four.loginMVP.model.IUserBiz;
-import com.chm.chmframwork.fragment.four.loginMVP.model.UserBiz;
-import com.chm.chmframwork.fragment.four.loginMVP.view.IUserLoginView;
+import com.chm.chmframwork.ui.loginMVP.bean.User;
+import com.chm.chmframwork.ui.loginMVP.model.IUserBiz;
+import com.chm.chmframwork.ui.loginMVP.model.UserBiz;
+import com.chm.chmframwork.ui.loginMVP.view.IUserLoginView;
 
 /**
  * Created by chm00 on 2017/7/22.

@@ -22,6 +22,7 @@ import com.chm.chmframwork.network.bean.GirlsBean;
 import com.chm.chmframwork.event.TabSelectedEvent;
 import com.chm.chmframwork.listener.OnItemClickListener;
 import com.chm.chmframwork.network.RemoteHelper;
+import com.chm.chmframwork.ui.GirlDetailFragment;
 import com.chm.chmframwork.widget.swipe.SwipeRefreshLoadLayout;
 
 import org.greenrobot.eventbus.EventBus;
@@ -105,7 +106,8 @@ public class GirlsFragment extends BaseFragment implements SwipeRefreshLoadLayou
                             .addSharedElement(((GirlsAdapter.VH) vh).img, "image_transition")
                             .commit();
                 }
-                start(fragment);
+                //start(fragment);
+                startActivity2Fragment(fragment);
             }
         });
 

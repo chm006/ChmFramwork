@@ -1,6 +1,6 @@
-package com.chm.chmframwork.fragment.four.loginMVP.model;
+package com.chm.chmframwork.ui.loginMVP.model;
 
-import com.chm.chmframwork.fragment.four.loginMVP.bean.User;
+import com.chm.chmframwork.ui.loginMVP.bean.User;
 
 /**
  * Created by chm00 on 2017/7/22.

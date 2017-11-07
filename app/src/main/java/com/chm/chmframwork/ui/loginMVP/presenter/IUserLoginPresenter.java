@@ -1,4 +1,4 @@
-package com.chm.chmframwork.fragment.four.loginMVP.presenter;
+package com.chm.chmframwork.ui.loginMVP.presenter;
 
 /**
  * Created by chm00 on 2017/7/22.

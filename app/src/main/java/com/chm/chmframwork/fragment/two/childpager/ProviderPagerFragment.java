@@ -11,14 +11,13 @@ import android.widget.ListView;
 
 import com.chm.chmframwork.R;
 import com.chm.chmframwork.base.BaseFragment;
-import com.chm.chmframwork.fragment.two.childpager.provider.ContactsFragment;
+import com.chm.chmframwork.ui.provider.ContactsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import me.yokeyword.fragmentation.SupportFragment;
-
 /**
+ * ProviderPagerFragment
  * Created by chm00 on 2017/7/5.
  */
 public class ProviderPagerFragment extends BaseFragment implements AdapterView.OnItemClickListener {
@@ -56,7 +55,7 @@ public class ProviderPagerFragment extends BaseFragment implements AdapterView.O
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                ((SupportFragment) getParentFragment()).start(ContactsFragment.newInstance());
+                startActivity2Fragment(ContactsFragment.newInstance());
                 break;
         }
     }

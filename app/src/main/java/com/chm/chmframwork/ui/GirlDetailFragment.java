@@ -1,4 +1,4 @@
-package com.chm.chmframwork.fragment.one;
+package com.chm.chmframwork.ui;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.ColorDrawable;

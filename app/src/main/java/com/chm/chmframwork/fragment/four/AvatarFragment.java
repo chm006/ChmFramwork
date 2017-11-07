@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 
 import com.chm.chmframwork.R;
 import com.chm.chmframwork.base.BaseFragment;
-import com.chm.chmframwork.fragment.four.loginMVP.view.LoginFragment;
-
-import me.yokeyword.fragmentation.SupportFragment;
+import com.chm.chmframwork.ui.loginMVP.view.LoginFragment;
 
 /**
+ * AvatarFragment
  * Created by chenmin on 2017/6/22.
  */
 public class AvatarFragment extends BaseFragment implements View.OnClickListener {
@@ -39,7 +38,7 @@ public class AvatarFragment extends BaseFragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.iv_avatar:
                 //如果没有登陆
-                ((SupportFragment) getParentFragment()).start(LoginFragment.newInstance());
+                startActivity2Fragment(LoginFragment.newInstance());
                 break;
         }
     }

@@ -50,7 +50,7 @@ public abstract class BaseMainFragment extends BaseFragment {
                     _mActivity.overridePendingTransition(0, R.anim.activity_close);
                 } else {
                     TOUCH_TIME = System.currentTimeMillis();
-                    ToastUtils.showShort(R.string.press_again_exit);
+                    ToastUtils.showShort(R.string.BaseMainFragment_string);
                 }
             } else {                                    // 如果不是,则回到第一个Fragment
                 _mBackToFirstListener.onBackToFirstFragment();

@@ -32,6 +32,8 @@ public class WebViewFragment extends BaseBackFragment {
     private String url = "http://www.baidu.com";
     private String mTitle;
 
+    private boolean isBackPressedSupport = true;
+
     public static WebViewFragment newInstance(String title, String url) {
         Bundle args = new Bundle();
         args.putString(ARG_TITLE_TITLE, title);
@@ -65,15 +67,32 @@ public class WebViewFragment extends BaseBackFragment {
         progress_bar = (ProgressBar) rootView.findViewById(R.id.progressBar);
         webView = (WebView) rootView.findViewById(R.id.webView);
         WebSettings settings = webView.getSettings();
-        settings.setDomStorageEnabled(true);
-        settings.setAllowFileAccess(true);//设置启用或禁止访问文件数据
-        settings.setBuiltInZoomControls(true);//设置是否支持缩放（出现缩放工具）
-        settings.setUseWideViewPort(true);//扩大比例的缩放
         settings.setJavaScriptEnabled(true);//设置是否支持JavaScript
-        settings.setSupportZoom(true);//设置是否支持变焦（设置可以支持缩放 ）
-        //自适应屏幕
-        settings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        settings.setLoadWithOverviewMode(true);
+        //设置自适应屏幕，两者合用
+        settings.setUseWideViewPort(true);//将图片调整到适合webview的大小
+        settings.setLoadWithOverviewMode(true);//缩放至屏幕的大小
+        //缩放操作
+        settings.setSupportZoom(true);//支持缩放，默认为true。是下面那个的前提。
+        settings.setBuiltInZoomControls(true);//设置是否支持缩放（出现缩放工具）
+        settings.setDisplayZoomControls(false);//隐藏原生的缩放控件
+        //其他细节操作
+        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK); //关闭webview中缓存
+        settings.setAllowFileAccess(true);//是否允许访问文件，默认允许访问
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);//支持通过js打开新的窗口
+        settings.setLoadsImagesAutomatically(true); //支持自动加载图片
+        //settings.setDefaultTextEncodingName("utf-8");//设置编码格式
+        //LOAD_CACHE_ONLY: 不使用网络，只读取本地缓存数据
+        //LOAD_DEFAULT: （默认）根据cache-control决定是否从网络上取数据。
+        //LOAD_NO_CACHE: 不使用缓存，只从网络获取数据.
+        //LOAD_CACHE_ELSE_NETWORK，只要本地有，无论是否过期，或者no-cache，都使用缓存中的数据。
+        settings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
+        //结合使用（离线加载）
+        settings.setDomStorageEnabled(true);// 开启 DOM storage API 功能
+        settings.setDatabaseEnabled(true);//开启 database storage API 功能
+        settings.setAppCacheEnabled(true);//开启 Application Caches 功能
+        //settings.setSaveFormData(true);//设置WebView是否保存表单数据，默认true，保存数据
+        //settings.setSupportMultipleWindows(true);//设置WebView是否支持多屏窗口，默认false，不支持。
+        //settings.setUserAgentString("User-Agent:Android");//设置用户代理，一般不用
         webView.setWebViewClient(new MyWebViewClient());
         webView.setWebChromeClient(new MyWebChromeClient());
         webView.loadUrl(url);
@@ -82,8 +101,13 @@ public class WebViewFragment extends BaseBackFragment {
     private class MyWebViewClient extends WebViewClient {
         //重写父类方法，让新打开的网页在当前的WebView中显示
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            view.loadUrl(url);
-            return true;
+            isBackPressedSupport = true;
+            if (url.startsWith("http:") || url.startsWith("https:")) {
+                view.loadUrl(url);
+                return false;
+            } else {
+                return true;
+            }
         }
 
         @Override
@@ -114,7 +138,7 @@ public class WebViewFragment extends BaseBackFragment {
     //回退键监听
     @Override
     public boolean onBackPressedSupport() {
-        if (webView.canGoBack()) {
+        if (webView.canGoBack() && isBackPressedSupport) {
             webView.goBack(); // goBack()表示返回WebView的上一页面
             return true;
         } else {
@@ -124,6 +148,13 @@ public class WebViewFragment extends BaseBackFragment {
 
     private void initToolbar() {
         toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
+        rootView.findViewById(R.id.btn_close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isBackPressedSupport = false;
+                _mActivity.onBackPressed();
+            }
+        });
         toolbar.setTitle(mTitle);
     }
 }

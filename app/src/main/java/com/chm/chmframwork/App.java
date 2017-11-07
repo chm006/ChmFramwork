@@ -2,6 +2,8 @@ package com.chm.chmframwork;
 
 import android.app.Application;
 
+import com.chm.chmframwork.base.BaseFragment;
+import com.chm.chmframwork.ui.FragmentBean;
 import com.chm.framwork.utilcode.util.Utils;
 
 import me.yokeyword.fragmentation.Fragmentation;
@@ -12,6 +14,7 @@ import me.yokeyword.fragmentation.helper.ExceptionHandler;
  * Created by chenmin on 2017/6/5.
  */
 public class App extends Application {
+    public static FragmentBean fragmentBean;
 
     @Override
     public void onCreate() {

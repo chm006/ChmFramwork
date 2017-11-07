@@ -1,4 +1,4 @@
-package com.chm.chmframwork.fragment.two.childpager.provider;
+package com.chm.chmframwork.ui.provider;
 
 import android.app.Activity;
 import android.content.ContentValues;
