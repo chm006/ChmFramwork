@@ -2,6 +2,7 @@ package com.chm.chmframwork.home.ui.view.swipe;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -140,7 +141,7 @@ public class SwipeRefreshLoadLayout extends FrameLayout implements NestedScrolli
         }
 
         int resId;
-        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SwipeRefreshLoadLayout);
+        @SuppressLint("Recycle") TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.SwipeRefreshLoadLayout);
         Resources resources = context.getResources();
 
         //Indicator背景颜色
@@ -572,6 +573,7 @@ public class SwipeRefreshLoadLayout extends FrameLayout implements NestedScrolli
      *
      * @return
      */
+    @SuppressLint("ObsoleteSdkInt")
     public boolean canChildScrollUp() {
         if (mTargetView == null) {
             return false;
@@ -595,6 +597,7 @@ public class SwipeRefreshLoadLayout extends FrameLayout implements NestedScrolli
      *
      * @return
      */
+    @SuppressLint("ObsoleteSdkInt")
     public boolean canChildScrollDown() {
         if (mTargetView == null) {
             return false;
