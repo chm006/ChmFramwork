@@ -36,11 +36,5 @@ public class App extends Application {
                     }
                 })
                 .install();
-
-        // init EventBus Index  建议配合build.gradle里apt{}开启
-//        EventBus.builder()
-//                .addIndex(new EventBusIndex())
-//                .logNoSubscriberMessages(false)
-//                .installDefaultEventBus();
     }
 }

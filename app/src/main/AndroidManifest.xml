@@ -13,10 +13,14 @@
         android:name=".App"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/Base.App.Theme">
+
         <activity
             android:name=".WelcomeActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/App.Theme.Launch">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,23 +28,7 @@
         </activity>
 
         <activity
-            android:name=".demo_flow.MainActivity"
-            android:launchMode="singleTask" />
-
-        <activity
-            android:name=".demo_flow.SwipeBackSampleActivity"
-            android:theme="@style/AppTheme.NoActionBar.SwipeBack" />
-
-        <activity android:name=".demo_wechat.MainActivity" />
-
-        <activity
-            android:name=".demo_zhihu.MainActivity"
-            android:launchMode="singleTask" />
-
-        <activity
             android:name=".home.MainActivity"
             android:launchMode="singleTask" />
-
     </application>
-
 </manifest>

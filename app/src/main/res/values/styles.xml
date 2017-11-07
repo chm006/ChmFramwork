@@ -7,11 +7,19 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <!--Base主题-->
+    <style name="Base.App.Theme" parent="AppTheme">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <!--关闭多点触控，在无需多点触控的页面上，建议关闭-->
-        <item name="android:splitMotionEvents">false</item>
+        <!--<item name="android:splitMotionEvents">false</item>-->
+    </style>
+
+    <!--启动界面主题-->
+    <style name="App.Theme.Launch" parent="Base.App.Theme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -21,20 +29,6 @@
     <style name="Toolbar_TextAppearance_White">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <style name="Toolbar_TextAppearance_Expanded">
-        <item name="android:textSize">24sp</item>
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-
-    <style name="AppTheme.NoActionBar.AppBarOverlay"
-        parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    <style name="AppTheme.NoActionBar.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
-    <style name="AppTheme.NoActionBar.SwipeBack">
-        <item name="android:windowIsTranslucent">true</item>
     </style>
 
     <style name="tab_appearance">

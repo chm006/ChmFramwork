@@ -11,14 +11,13 @@ import com.chm.chmframwork.home.ui.fragment.four.FourFragment;
 import com.chm.chmframwork.home.ui.fragment.one.OneFragment;
 import com.chm.chmframwork.home.ui.fragment.three.ThreeFragment;
 import com.chm.chmframwork.home.ui.fragment.two.TwoFragment;
-import com.chm.chmframwork.home.ui.view.BottomBar;
-import com.chm.chmframwork.home.ui.view.BottomBarTab;
+import com.chm.chmframwork.widget.BottomBar;
+import com.chm.chmframwork.widget.BottomBarTab;
 
 import org.greenrobot.eventbus.EventBus;
 
 import me.yokeyword.fragmentation.SupportActivity;
 import me.yokeyword.fragmentation.SupportFragment;
-import me.yokeyword.fragmentation.anim.FragmentAnimator;
 import me.yokeyword.fragmentation.helper.FragmentLifecycleCallbacks;
 
 /**
@@ -67,14 +66,9 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
 
             @Override
             public void onFragmentSupportVisible(SupportFragment fragment) {
-                Log.i("MainActivity2", "onFragmentSupportVisible--->" + fragment.getClass().getSimpleName());
+                Log.i("MainActivity", "onFragmentSupportVisible--->" + fragment.getClass().getSimpleName());
             }
         });
-    }
-
-    @Override
-    protected FragmentAnimator onCreateFragmentAnimator() {
-        return super.onCreateFragmentAnimator();
     }
 
     private void initView() {
@@ -104,13 +98,13 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
                 // 如果不在该类别Fragment的主页,则回到主页;
                 if (count > 1) {
                     if (currentFragment instanceof OneFragment) {
-                        //currentFragment.popToChild(OneHomeFragment.class, false);
+                        currentFragment.popToChild(OneFragment.class, false);
                     } else if (currentFragment instanceof TwoFragment) {
-                        //currentFragment.popToChild(ViewPagerFragment.class, false);
+                        currentFragment.popToChild(TwoFragment.class, false);
                     } else if (currentFragment instanceof ThreeFragment) {
-                        //currentFragment.popToChild(ShopFragment.class, false);
+                        currentFragment.popToChild(ThreeFragment.class, false);
                     } else if (currentFragment instanceof FourFragment) {
-                        //currentFragment.popToChild(MeFragment.class, false);
+                        currentFragment.popToChild(FourFragment.class, false);
                     }
                     return;
                 }
@@ -150,6 +144,6 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        EventBus.getDefault().unregister(this);
+        EventBus.getDefault().unregister(this);
     }
 }

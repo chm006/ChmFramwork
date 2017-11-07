@@ -1,5 +1,1 @@
-<manifest
-
-    package="com.chm.framwork">
-
-</manifest>
+<manifest package="com.chm.framwork"/>

@@ -22,7 +22,7 @@ import com.chm.chmframwork.home.event.TabSelectedEvent;
 import com.chm.chmframwork.home.helper.DetailTransition;
 import com.chm.chmframwork.home.listener.OnItemClickListener;
 import com.chm.chmframwork.home.ui.fragment.one.child.bean.GirlsBean;
-import com.chm.chmframwork.home.ui.view.swipe.SwipeRefreshLoadLayout;
+import com.chm.chmframwork.widget.swipe.SwipeRefreshLoadLayout;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

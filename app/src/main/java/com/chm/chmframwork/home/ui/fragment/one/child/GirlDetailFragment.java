@@ -25,7 +25,7 @@ import com.chm.chmframwork.home.api.RemoteHelper;
 import com.chm.chmframwork.home.base.BaseBackFragment;
 import com.chm.chmframwork.home.listener.OnItemClickListener;
 import com.chm.chmframwork.home.ui.fragment.one.child.bean.GirlsBean;
-import com.chm.chmframwork.home.ui.view.WebViewFragment;
+import com.chm.chmframwork.widget.WebViewFragment;
 import com.chm.framwork.utilcode.util.TimeUtils;
 import com.google.gson.internal.LinkedTreeMap;
 

@@ -2,8 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/transparent"
-    android:orientation="vertical">
+    android:background="@android:color/transparent">
 
     <FrameLayout
         android:id="@+id/container"
@@ -11,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/bottombar_height" />
 
-    <com.chm.chmframwork.home.ui.view.BottomBar
+    <com.chm.chmframwork.widget.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/bottombar_height"
@@ -22,5 +21,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_marginBottom="@dimen/bottombar_height"
-        android:background="@drawable/actionbar_shadow_up" />
+        android:background="@drawable/actionbar_shadow_up"
+        android:contentDescription="@string/content_description" />
 </FrameLayout>
