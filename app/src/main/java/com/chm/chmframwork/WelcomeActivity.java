@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.chm.chmframwork.home.MainActivity;
-import com.chm.chmframwork.home.ui.fragment.one.child.bean.GirlsBean;
+import com.chm.chmframwork.network.bean.GirlsBean;
 import com.chm.framwork.utilcode.util.ToastUtils;
 
 /**
@@ -55,6 +54,8 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeView_I 
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+                //设置启动动画
+                overridePendingTransition(R.anim.activity_open, 0);
                 finish();
             }
         });

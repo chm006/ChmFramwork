@@ -1,6 +1,6 @@
 package com.chm.chmframwork;
 
-import com.chm.chmframwork.home.ui.fragment.one.child.bean.GirlsBean;
+import com.chm.chmframwork.network.bean.GirlsBean;
 
 /**
  * view

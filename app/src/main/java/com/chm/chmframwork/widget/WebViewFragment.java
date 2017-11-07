@@ -15,7 +15,7 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.chm.chmframwork.R;
-import com.chm.chmframwork.home.base.BaseBackFragment;
+import com.chm.chmframwork.base.BaseBackFragment;
 
 /**
  * WebView

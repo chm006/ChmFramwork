@@ -2,4 +2,5 @@
     <string name="app_name">FW</string>
     <string name="content_description"/>
     <string name="activity_welcome_btn">进入首页</string>
+    <string name="press_again_exit">再按一次退出</string>
 </resources>

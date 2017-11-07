@@ -3,8 +3,8 @@ package com.chm.chmframwork;
 import android.content.Context;
 import android.view.View;
 
-import com.chm.chmframwork.home.api.RemoteHelper;
-import com.chm.chmframwork.home.ui.fragment.one.child.bean.GirlsBean;
+import com.chm.chmframwork.network.RemoteHelper;
+import com.chm.chmframwork.network.bean.GirlsBean;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

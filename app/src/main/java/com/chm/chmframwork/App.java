@@ -9,7 +9,7 @@ import me.yokeyword.fragmentation.helper.ExceptionHandler;
 
 /**
  * Application
- * Created by YoKey on 16/11/23.
+ * Created by chenmin on 2017/6/5.
  */
 public class App extends Application {
 
