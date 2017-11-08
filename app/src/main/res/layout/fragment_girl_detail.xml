@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/content_description"
                 android:scaleType="centerCrop"
-                android:src="@mipmap/bg_second"
+                android:src="@drawable/bg_second"
                 app:layout_collapseMode="parallax"
                 app:layout_collapseParallaxMultiplier="0.7" />
 
@@ -77,6 +77,6 @@
         app:fabSize="mini"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@mipmap/ic_arrow_forward_white_24dp" />
+        app:srcCompat="@drawable/ic_arrow_forward_white_24dp" />
 
 </android.support.design.widget.CoordinatorLayout>

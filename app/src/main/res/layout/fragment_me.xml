@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="?attr/selectableItemBackground"
-                android:drawableLeft="@mipmap/ic_settings_grey_500_24dp"
+                android:drawableLeft="@drawable/ic_settings_grey_500_24dp"
                 android:drawablePadding="16dp"
                 android:drawableRight="@drawable/fragmentation_ic_right"
                 android:gravity="center_vertical"

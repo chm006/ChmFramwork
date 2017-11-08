@@ -15,7 +15,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
-            android:src="@mipmap/ic_avatar"
+            android:src="@drawable/ic_avatar"
             tools:ignore="ContentDescription" />
     </FrameLayout>
 </FrameLayout>

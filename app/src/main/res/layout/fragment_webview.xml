@@ -19,7 +19,7 @@
             android:id="@+id/btn_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/dialog_delete"
+            android:src="@drawable/dialog_delete"
             android:padding="10dp"
             android:layout_gravity="right"
             tools:ignore="RtlHardcoded"

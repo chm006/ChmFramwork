@@ -33,7 +33,7 @@ public class SettingsFragment extends BaseFragment {
 
     private void initView(View view) {
         Toolbar mToolbar = (Toolbar) view.findViewById(R.id.toolbarSettings);
-        mToolbar.setNavigationIcon(R.mipmap.ic_arrow_back_white_24dp);
+        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

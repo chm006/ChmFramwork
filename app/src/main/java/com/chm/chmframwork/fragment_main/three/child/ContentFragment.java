@@ -56,7 +56,8 @@ public class ContentFragment extends BaseFragment {
 
     private void initView(View view) {
         TextView mTvContent = (TextView) view.findViewById(R.id.tv_content);
-        mTvContent.setText("Fragment内容:\n" + mMenu);
+        String s = "Fragment内容:\n" + mMenu;
+        mTvContent.setText(s);
     }
 
     @Override

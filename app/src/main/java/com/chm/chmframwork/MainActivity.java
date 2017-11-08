@@ -56,10 +56,10 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
 
     @Override
     public void setBottomBar() {
-        mBottomBar.addItem(new BottomBarTab(this, R.mipmap.ic_home_white_24dp))
-                .addItem(new BottomBarTab(this, R.mipmap.ic_discover_white_24dp))
-                .addItem(new BottomBarTab(this, R.mipmap.ic_message_white_24dp))
-                .addItem(new BottomBarTab(this, R.mipmap.ic_account_circle_white_24dp));
+        mBottomBar.addItem(new BottomBarTab(this, R.drawable.ic_home_white_24dp))
+                .addItem(new BottomBarTab(this, R.drawable.ic_discover_white_24dp))
+                .addItem(new BottomBarTab(this, R.drawable.ic_message_white_24dp))
+                .addItem(new BottomBarTab(this, R.drawable.ic_account_circle_white_24dp));
 
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
