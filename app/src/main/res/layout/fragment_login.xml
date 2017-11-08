@@ -11,13 +11,13 @@
         android:id="@+id/id_et_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="用户名" />
+        android:hint="@string/fragment_login_username" />
 
     <EditText
         android:id="@+id/id_et_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="密码"
+        android:hint="@string/fragment_login_password"
         tools:ignore="TextFields" />
 
     <LinearLayout
@@ -30,14 +30,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="登陆" />
+            android:text="@string/fragment_login_btn_login"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/id_btn_clear"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="清除" />
+            android:text="@string/fragment_login_btn_clear"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
     <ProgressBar

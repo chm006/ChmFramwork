@@ -4,8 +4,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.chm.chmframwork.R;
-import com.chm.chmframwork.fragment.OneFragment;
-import com.chm.framwork.utilcode.util.ToastUtils;
 
 public class BaseBackFragment extends BaseFragment {
 

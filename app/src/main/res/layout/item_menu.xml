@@ -26,7 +26,8 @@
             android:layout_marginRight="8dp"
             android:layout_toRightOf="@id/view_line"
             android:textColor="@android:color/black"
-            tools:text="123" />
+            tools:text="123"
+            tools:ignore="RtlHardcoded" />
 
         <View
             android:layout_width="match_parent"

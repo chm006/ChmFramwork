@@ -14,5 +14,4 @@
         android:gravity="center_horizontal"
         android:textSize="26sp"
         tools:text="Fragment内容" />
-
 </LinearLayout>

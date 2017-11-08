@@ -6,10 +6,6 @@ import android.util.Log;
 
 import com.chm.chmframwork.base.BaseMainFragment;
 import com.chm.chmframwork.event.TabSelectedEvent;
-import com.chm.chmframwork.fragment.FourFragment;
-import com.chm.chmframwork.fragment.OneFragment;
-import com.chm.chmframwork.fragment.ThreeFragment;
-import com.chm.chmframwork.fragment.TwoFragment;
 import com.chm.chmframwork.widget.BottomBar;
 import com.chm.chmframwork.widget.BottomBarTab;
 
@@ -22,15 +18,12 @@ import me.yokeyword.fragmentation.helper.FragmentLifecycleCallbacks;
 
 /**
  * tip: 多使用右上角的"查看栈视图"
+ * 底部带BottomBar的主页
  * Created by chenmin on 2017/6/15.
  */
-public class MainActivity extends SupportActivity implements BaseMainFragment.OnBackToFirstListener {
-    public static final int ONE = 0;
-    public static final int TWO = 1;
-    public static final int THREE = 2;
-    public static final int FOUR = 3;
+public class MainActivity extends SupportActivity implements BaseMainFragment.OnBackToFirstListener, MainView {
 
-    private SupportFragment[] mFragments = new SupportFragment[4];
+    private MainPresenters presenter = new MainPresenter(this);
 
     private BottomBar mBottomBar;
 
@@ -38,28 +31,14 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        EventBus.getDefault().register(this);
-        if (savedInstanceState == null) {
-            mFragments[ONE] = OneFragment.newInstance();
-            mFragments[TWO] = TwoFragment.newInstance();
-            mFragments[THREE] = ThreeFragment.newInstance();
-            mFragments[FOUR] = FourFragment.newInstance();
 
-            loadMultipleRootFragment(R.id.container, ONE,
-                    mFragments[ONE],
-                    mFragments[TWO],
-                    mFragments[THREE],
-                    mFragments[FOUR]);
-        } else {
-            // 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
-            // 这里我们需要拿到mFragments的引用,也可以通过getSupportFragmentManager.getFragments()自行进行判断查找(效率更高些),用下面的方法查找更方便些
-            mFragments[ONE] = findFragment(OneFragment.class);
-            mFragments[TWO] = findFragment(TwoFragment.class);
-            mFragments[THREE] = findFragment(ThreeFragment.class);
-            mFragments[FOUR] = findFragment(FourFragment.class);
-        }
+        EventBus.getDefault().register(this);
+
+        presenter.initFragments(savedInstanceState);
 
         initView();
+
+        presenter.initBottomBar();
 
         // 可以监听该Activity下的所有Fragment的18个 生命周期方法
         registerFragmentLifecycleCallbacks(new FragmentLifecycleCallbacks() {
@@ -73,7 +52,10 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
 
     private void initView() {
         mBottomBar = (BottomBar) findViewById(R.id.bottomBar);
+    }
 
+    @Override
+    public void setBottomBar() {
         mBottomBar.addItem(new BottomBarTab(this, R.mipmap.ic_home_white_24dp))
                 .addItem(new BottomBarTab(this, R.mipmap.ic_discover_white_24dp))
                 .addItem(new BottomBarTab(this, R.mipmap.ic_message_white_24dp))
@@ -82,7 +64,8 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
             public void onTabSelected(int position, int prePosition) {
-                showHideFragment(mFragments[position], mFragments[prePosition]);
+                SupportFragment[] fragments = presenter.getFragments();
+                showHideFragment(fragments[position], fragments[prePosition]);
             }
 
             @Override
@@ -92,7 +75,7 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
 
             @Override
             public void onTabReselected(int position) {
-                SupportFragment currentFragment = mFragments[position];
+                SupportFragment currentFragment = presenter.getFragments()[position];
                 int count = currentFragment.getChildFragmentManager().getBackStackEntryCount();
 
                 // 这里推荐使用EventBus来实现 -> 解耦
@@ -103,6 +86,16 @@ public class MainActivity extends SupportActivity implements BaseMainFragment.On
                 }
             }
         });
+    }
+
+    @Override
+    public void loadMultipleRootFragment(int containerId, int showPosition, SupportFragment... toFragments) {
+        super.loadMultipleRootFragment(containerId, showPosition, toFragments);
+    }
+
+    @Override
+    public <T extends SupportFragment> T findFragment(Class<T> c) {
+        return super.findFragment(c);
     }
 
     @Override

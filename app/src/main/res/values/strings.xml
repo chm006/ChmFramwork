@@ -3,4 +3,9 @@
     <string name="content_description"/>
     <string name="activity_welcome_btn">进入首页</string>
     <string name="BaseMainFragment_string">再按一次退出</string>
+    <string name="fragment_login_username">用户名</string>
+    <string name="fragment_login_password">密码</string>
+    <string name="fragment_login_btn_login">登陆</string>
+    <string name="fragment_login_btn_clear">清除</string>
+    <string name="fragment_settings_tv">我是设置页面</string>
 </resources>

@@ -3,7 +3,7 @@ package com.chm.chmframwork.base;
 import android.content.Context;
 
 import com.chm.chmframwork.R;
-import com.chm.chmframwork.fragment.OneFragment;
+import com.chm.chmframwork.fragment_main.OneFragment;
 import com.chm.framwork.utilcode.util.ToastUtils;
 
 /**
@@ -47,7 +47,7 @@ public abstract class BaseMainFragment extends BaseFragment {
                 if (System.currentTimeMillis() - TOUCH_TIME < WAIT_TIME) {
                     _mActivity.finish();
                     //关闭窗体动画显示
-                    _mActivity.overridePendingTransition(0, R.anim.activity_close);
+                    _mActivity.overridePendingTransition(R.anim.activity_open, R.anim.activity_close);
                 } else {
                     TOUCH_TIME = System.currentTimeMillis();
                     ToastUtils.showShort(R.string.BaseMainFragment_string);

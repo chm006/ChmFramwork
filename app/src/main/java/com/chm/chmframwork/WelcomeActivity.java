@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.chm.chmframwork.network.bean.GirlsBean;
+import com.chm.chmframwork.bean.GirlsBean;
+import com.chm.framwork.utilcode.util.ActivityUtils;
 import com.chm.framwork.utilcode.util.ToastUtils;
 
 /**
@@ -17,9 +18,9 @@ import com.chm.framwork.utilcode.util.ToastUtils;
  * Created by chenmin on 2017/6/5.
  */
 
-public class WelcomeActivity extends AppCompatActivity implements WelcomeView_I {
+public class WelcomeActivity extends AppCompatActivity implements WelcomeView {
 
-    private WelcomePresenter_I presenter = new WelcomePresenter(this);
+    private WelcomePresenters presenter = new WelcomePresenter(this);
 
     private ImageView iv_welcome;
     private Button btn_welcome;
@@ -53,9 +54,7 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeView_I 
         btn_welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-                //设置启动动画
-                overridePendingTransition(R.anim.activity_open, 0);
+                ActivityUtils.startActivity(WelcomeActivity.this, MainActivity.class, R.anim.activity_open, R.anim.activity_close);
                 finish();
             }
         });

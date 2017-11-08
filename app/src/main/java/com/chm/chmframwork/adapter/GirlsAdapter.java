@@ -16,7 +16,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.chm.chmframwork.R;
 import com.chm.chmframwork.listener.OnItemClickListener;
-import com.chm.chmframwork.network.bean.GirlsBean;
+import com.chm.chmframwork.bean.GirlsBean;
 
 import java.util.ArrayList;
 import java.util.List;

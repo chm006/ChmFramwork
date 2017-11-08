@@ -1,6 +1,6 @@
 package com.chm.chmframwork.network;
 
-import com.chm.chmframwork.network.bean.GirlsBean;
+import com.chm.chmframwork.bean.GirlsBean;
 
 import java.util.Map;
 

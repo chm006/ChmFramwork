@@ -33,7 +33,7 @@
             android:launchMode="singleTask" />
 
         <activity
-            android:name=".ui.FragmentActivity"
+            android:name=".FullActivity"
             android:launchMode="singleTask" />
     </application>
 </manifest>

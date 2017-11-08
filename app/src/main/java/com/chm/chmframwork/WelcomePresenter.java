@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.chm.chmframwork.network.RemoteHelper;
-import com.chm.chmframwork.network.bean.GirlsBean;
+import com.chm.chmframwork.bean.GirlsBean;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -13,14 +13,14 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * presenter
+ * Presenter
  * Created by chenmin on 2017/11/7.
  */
 
-class WelcomePresenter implements WelcomePresenter_I {
-    private WelcomeView_I view;
+class WelcomePresenter implements WelcomePresenters {
+    private WelcomeView view;
 
-    WelcomePresenter(WelcomeView_I view) {
+    WelcomePresenter(WelcomeView view) {
         this.view = view;
     }
 
