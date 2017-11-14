@@ -11,10 +11,11 @@ import android.view.ViewGroup;
 
 import com.chm.chmframwork.R;
 import com.chm.chmframwork.adapter.PagerFragmentAdapter;
-import com.chm.chmframwork.base.BaseFragment;
+import com.chm.chmframwork.base.BaseMainFragment;
 import com.chm.chmframwork.fragment_main.two.childpager.BroadCastPagerFragment;
 import com.chm.chmframwork.fragment_main.two.childpager.ProviderPagerFragment;
 import com.chm.chmframwork.fragment_main.two.childpager.ServicePagerFragment;
+import com.chm.framwork.fragmentation.SupportFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
  * 顶端分类切换
  * Created by chenmin on 2017/6/22.
  */
-public class ViewPagerFragment extends BaseFragment {
+public class ViewPagerFragment extends BaseMainFragment {
     private String[] pageTitles;
     private List<Fragment> fragments;
 

@@ -8,13 +8,14 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chm.chmframwork.R;
-import com.chm.chmframwork.base.BaseFragment;
+import com.chm.chmframwork.base.BaseMainFragment;
+import com.chm.framwork.fragmentation.SupportFragment;
 
 /**
  * BroadCastPagerFragment
  * Created by chm00 on 2017/7/5.
  */
-public class BroadCastPagerFragment extends BaseFragment {
+public class BroadCastPagerFragment extends BaseMainFragment {
     private static final String ARG_TYPE = "arg_pos";
 
     private String desc;

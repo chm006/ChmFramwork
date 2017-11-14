@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.chm.chmframwork.R;
-import com.chm.chmframwork.base.BaseFragment;
 
-import me.yokeyword.fragmentation.anim.DefaultNoAnimator;
-import me.yokeyword.fragmentation.anim.FragmentAnimator;
+import com.chm.chmframwork.base.BaseMainFragment;
+import com.chm.framwork.fragmentation.anim.DefaultNoAnimator;
+import com.chm.framwork.fragmentation.anim.FragmentAnimator;
 
 /**
  * ContentFragment
  * Created by chenmin on 2017/6/22.
  */
 
-public class ContentFragment extends BaseFragment {
+public class ContentFragment extends BaseMainFragment {
     private static final String ARG_MENU = "arg_menu";
 
     private String mMenu;
@@ -42,7 +42,7 @@ public class ContentFragment extends BaseFragment {
     }
 
     @Override
-    protected FragmentAnimator onCreateFragmentAnimator() {
+    public FragmentAnimator onCreateFragmentAnimator() {
         return new DefaultNoAnimator();
     }
 
@@ -58,11 +58,5 @@ public class ContentFragment extends BaseFragment {
         TextView mTvContent = (TextView) view.findViewById(R.id.tv_content);
         String s = "Fragment内容:\n" + mMenu;
         mTvContent.setText(s);
-    }
-
-    @Override
-    public boolean onBackPressedSupport() {
-        // ContentFragment是ShopFragment的栈顶子Fragment,可以在此处理返回按键事件
-        return super.onBackPressedSupport();
     }
 }

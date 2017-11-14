@@ -54,7 +54,7 @@ public class WelcomeActivity extends AppCompatActivity implements WelcomeView {
         btn_welcome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ActivityUtils.startActivity(WelcomeActivity.this, MainActivity.class, R.anim.activity_open, R.anim.activity_close);
+                ActivityUtils.startActivity(WelcomeActivity.this, MainActivity.class);
                 finish();
             }
         });

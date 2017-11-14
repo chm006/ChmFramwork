@@ -4,29 +4,31 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.GravityCompat;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Fade;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.chm.chmframwork.MainPresenter;
 import com.chm.chmframwork.R;
 import com.chm.chmframwork.adapter.GirlsAdapter;
-import com.chm.chmframwork.base.BaseFragment;
+import com.chm.chmframwork.base.BaseMainFragment;
 import com.chm.chmframwork.bean.GirlsBean;
-import com.chm.chmframwork.event.TabSelectedEvent;
-import com.chm.chmframwork.fragment_full.girl_detail.GirlDetailFragment;
-import com.chm.chmframwork.fragment_main.one.transition.DetailTransition;
+import com.chm.chmframwork.fragment_back.GirlDetailFragment;
+import com.chm.chmframwork.fragment_main.one.helper.DetailTransition;
 import com.chm.chmframwork.listener.OnItemClickListener;
 import com.chm.chmframwork.network.RemoteHelper;
 import com.chm.chmframwork.widget.swipe.SwipeRefreshLoadLayout;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
+import com.chm.framwork.fragmentation.ISupportActivity;
+import com.chm.framwork.fragmentation.anim.DefaultHorizontalAnimator;
+import com.chm.framwork.fragmentation.anim.DefaultNoAnimator;
+import com.chm.framwork.fragmentation.anim.DefaultVerticalAnimator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,7 @@ import io.reactivex.schedulers.Schedulers;
  * 妹子图
  * Created by chenmin on 2015/12/9.
  */
-public class GirlsFragment extends BaseFragment implements SwipeRefreshLoadLayout.OnRefreshListener {
+public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadLayout.OnRefreshListener, Toolbar.OnMenuItemClickListener {
     private List<GirlsBean.ResultsEntity> pics = new ArrayList<>();
     private int page = 1;
     private int size = 10;
@@ -50,6 +52,7 @@ public class GirlsFragment extends BaseFragment implements SwipeRefreshLoadLayou
     private RecyclerView mRecy;
     private GirlsAdapter mAdapter;
     private FloatingActionButton mFab;
+    private Toolbar toolbar;
 
     private boolean mInAtTop = true;
     private int mScrollTotal;
@@ -65,18 +68,52 @@ public class GirlsFragment extends BaseFragment implements SwipeRefreshLoadLayou
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_girls, container, false);
-        EventBus.getDefault().register(this);
         initView(view);
         return view;
     }
 
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_anim:
+                final PopupMenu popupMenu = new PopupMenu(_mActivity, toolbar, GravityCompat.END);
+                popupMenu.inflate(R.menu.girls_pop);
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.action_anim_veritical:
+                                ((ISupportActivity) _mActivity).setFragmentAnimator(new DefaultVerticalAnimator());
+                                Toast.makeText(_mActivity, R.string.anim_v, Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.action_anim_horizontal:
+                                ((ISupportActivity) _mActivity).setFragmentAnimator(new DefaultHorizontalAnimator());
+                                Toast.makeText(_mActivity, R.string.anim_h, Toast.LENGTH_SHORT).show();
+                                break;
+                            case R.id.action_anim_none:
+                                ((ISupportActivity) _mActivity).setFragmentAnimator(new DefaultNoAnimator());
+                                Toast.makeText(_mActivity, R.string.anim_none, Toast.LENGTH_SHORT).show();
+                                break;
+                        }
+                        popupMenu.dismiss();
+                        return true;
+                    }
+                });
+                popupMenu.show();
+                break;
+        }
+        return true;
+    }
+
     private void initView(View view) {
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         mRecy = (RecyclerView) view.findViewById(R.id.recy);
         mRefreshLayout = (SwipeRefreshLoadLayout) view.findViewById(R.id.refresh_layout);
         mFab = (FloatingActionButton) view.findViewById(R.id.fab);
 
         toolbar.setTitle("每日更新");
+        toolbar.inflateMenu(R.menu.girls);
+        toolbar.setOnMenuItemClickListener(this);
 
         mRefreshLayout.setOnRefreshListener(this);
 
@@ -88,24 +125,22 @@ public class GirlsFragment extends BaseFragment implements SwipeRefreshLoadLayou
         mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position, View view, RecyclerView.ViewHolder vh) {
-                GirlDetailFragment fragment = GirlDetailFragment.newInstance(pics.get(position));
-
+                GirlDetailFragment fragment = GirlDetailFragment.newInstance(mAdapter.getItem(position));
                 // 这里是使用SharedElement的用例
                 // LOLLIPOP(5.0)系统的 SharedElement支持有 系统BUG， 这里判断大于 > LOLLIPOP
-                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                /*if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
                     setExitTransition(new Fade());
                     fragment.setEnterTransition(new Fade());
                     fragment.setSharedElementReturnTransition(new DetailTransition());
                     fragment.setSharedElementEnterTransition(new DetailTransition());
-
                     // 25.1.0以下的support包,Material过渡动画只有在进栈时有,返回时没有;
                     // 25.1.0+的support包，SharedElement正常
-                    fragment.transaction()
-                            .addSharedElement(((GirlsAdapter.VH) vh).img, "image_transition")
-                            .commit();
-                }
-                //start(fragment);
-                startActivity2Fragment(fragment);
+                    fragment.setSharedElementEnterTransition(extraTransaction().addSharedElement(((GirlsAdapter.VH) vh).img, getString(R.string.image_transition)));
+                    startNewFragment(fragment);
+                } else {
+                    startNewFragment(fragment);
+                }*/
+                startNewFragment(fragment);
             }
         });
 
@@ -234,28 +269,24 @@ public class GirlsFragment extends BaseFragment implements SwipeRefreshLoadLayou
     }
 
     private void scrollToTop() {
-        mRecy.smoothScrollToPosition(0);
-    }
-
-    /**
-     * 选择tab事件
-     */
-    @Subscribe
-    public void onTabSelectedEvent(TabSelectedEvent event) {
-        if (event.position != MainPresenter.ONE) {
-            return;
-        }
         if (mInAtTop) {
             onRefresh();
         } else {
-            scrollToTop();
+            mRecy.smoothScrollToPosition(0);
         }
     }
+
+    //选择tab事件
+    /*public void onTabSelectedEvent(TabSelectedEvent event) {
+        if (event.position != 0) {
+            return;
+        }
+        scrollToTop();
+    }*/
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         mRecy.setAdapter(null);
-        EventBus.getDefault().unregister(this);
     }
 }

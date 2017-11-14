@@ -53,17 +53,17 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
 
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support:cardview-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:25.4.0'
+    compile 'com.android.support:design:25.4.0'
+    compile 'com.android.support:cardview-v7:25.4.0'
+    compile 'com.android.support:recyclerview-v7:25.4.0'
 
     // Fragment管理
-    compile project(':fragmentation')
-    compile project(':fragmentation_swipeback')
+    //compile 'me.yokeyword:fragmentation:1.1.8'
+    //compile 'me.yokeyword:fragmentation-swipeback:1.1.8'
     // EventBus
-    compile project(':eventbus_activity_scope')
-    compile 'org.greenrobot:eventbus:3.0.0'
+    //compile 'me.yokeyword:eventbus-activity-scope:1.1.0'
+    //compile 'org.greenrobot:eventbus:3.0.0'
 
     compile 'com.github.bumptech.glide:glide:4.3.1'
     compile 'com.squareup.okhttp3:okhttp:3.8.0'

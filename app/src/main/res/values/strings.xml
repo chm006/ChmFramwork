@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">FW</string>
-    <string name="content_description"/>
+    <string name="content_description" />
     <string name="activity_welcome_btn">进入首页</string>
     <string name="BaseMainFragment_string">再按一次退出</string>
+    <string name="anim">动画</string>
+    <string name="anim_v">设置全局动画成功! 竖向</string>
+    <string name="anim_h">设置全局动画成功! 横向</string>
+    <string name="anim_none">设置全局动画成功! 无</string>
+    <string name="image_transition">image_transition</string>
     <string name="fragment_login_username">用户名</string>
     <string name="fragment_login_password">密码</string>
     <string name="fragment_login_btn_login">登陆</string>

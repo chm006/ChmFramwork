@@ -34,8 +34,5 @@
             android:name=".MainActivity"
             android:launchMode="singleTask" />
 
-        <activity
-            android:name=".FullActivity"
-            android:launchMode="singleTask" />
     </application>
 </manifest>
