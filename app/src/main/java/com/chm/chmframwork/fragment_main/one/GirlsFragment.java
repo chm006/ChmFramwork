@@ -269,8 +269,6 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
                 .subscribe(new Observer<GirlsBean>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
-                        mRefreshLayout.finishLoadmore();
-                        loading = false;
                     }
 
                     @Override
@@ -283,18 +281,17 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
                                 mAdapter.setDatas(pics);
                             }
                         }
-                        mRefreshLayout.finishLoadmore();
-                        loading = false;
+
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        mRefreshLayout.finishLoadmore();
-                        loading = false;
                     }
 
                     @Override
                     public void onComplete() {
+                        mRefreshLayout.finishLoadmore();
+                        loading = false;
                     }
                 });
     }

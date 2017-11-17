@@ -37,17 +37,16 @@ class WelcomePresenter implements WelcomePresenters {
                     @Override
                     public void onNext(@NonNull GirlsBean girlsBean) {
                         view.setImageView(girlsBean);
-                        view.btnVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
                         view.showToast("加载闪屏页失败，可直接进入首页");
-                        view.btnVisibility(View.VISIBLE);
                     }
 
                     @Override
                     public void onComplete() {
+                        view.btnVisibility(View.VISIBLE);
                     }
                 });
     }
