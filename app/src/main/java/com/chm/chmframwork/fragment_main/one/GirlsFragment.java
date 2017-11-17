@@ -46,6 +46,7 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
     private int page = 1;
     private int size = 10;
     private SwipeRefreshLoadLayout mRefreshLayout;
+    private LinearLayoutManager manager;
     private RecyclerView mRecy;
     private GirlsAdapter mAdapter;
     private FloatingActionButton mFab;
@@ -53,6 +54,8 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
 
     private boolean mInAtTop = true;
     private int mScrollTotal;
+
+    private boolean loading = false;
 
     public static GirlsFragment newInstance() {
         Bundle args = new Bundle();
@@ -66,6 +69,7 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_girls, container, false);
         initView(view);
+        refresh();
         return view;
     }
 
@@ -115,7 +119,7 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
         mRefreshLayout.setOnRefreshListener(this);
 
         mAdapter = new GirlsAdapter(_mActivity);
-        LinearLayoutManager manager = new LinearLayoutManager(_mActivity);
+        manager = new LinearLayoutManager(_mActivity);
         mRecy.setLayoutManager(manager);
         mRecy.setAdapter(mAdapter);
 
@@ -159,6 +163,29 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
             }
         });
 
+        mRecy.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                //向下滚动
+                if (dy > 0) {
+                    int visibleItemCount = manager.getChildCount();
+                    int totalItemCount = manager.getItemCount();
+                    int pastVisiblesItems = manager.findFirstVisibleItemPosition();
+                    //滑动到最后两张的时候继续加载更多
+                    if (!loading && (visibleItemCount + pastVisiblesItems) >= (totalItemCount - 2)) {
+                        loading = true;
+                        loadMore();
+                    }
+                }
+            }
+        });
+
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -170,7 +197,7 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
     @Override
     public void onResume() {
         super.onResume();
-        refresh();
+        //refresh();
     }
 
     @Override
@@ -243,20 +270,27 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         mRefreshLayout.finishLoadmore();
+                        loading = false;
                     }
 
                     @Override
                     public void onNext(@NonNull GirlsBean girlsBean) {
-                        for (GirlsBean.ResultsEntity resultsEntity : girlsBean.getResults()) {
-                            pics.add(resultsEntity);
+                        if (null != girlsBean) {
+                            if (!girlsBean.getResults().isEmpty()) {
+                                for (GirlsBean.ResultsEntity resultsEntity : girlsBean.getResults()) {
+                                    pics.add(resultsEntity);
+                                }
+                                mAdapter.setDatas(pics);
+                            }
                         }
-                        mAdapter.setDatas(pics);
                         mRefreshLayout.finishLoadmore();
+                        loading = false;
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
                         mRefreshLayout.finishLoadmore();
+                        loading = false;
                     }
 
                     @Override

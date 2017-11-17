@@ -98,8 +98,8 @@ public class GirlsAdapter extends RecyclerView.Adapter<GirlsAdapter.VH> {
         this.mClickListener = itemClickListener;
     }
 
-    public class VH extends RecyclerView.ViewHolder {
-        public ImageView img;
+    class VH extends RecyclerView.ViewHolder {
+        ImageView img;
 
         VH(View itemView) {
             super(itemView);

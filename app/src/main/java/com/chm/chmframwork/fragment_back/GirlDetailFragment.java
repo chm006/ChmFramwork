@@ -21,10 +21,11 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.chm.chmframwork.R;
 import com.chm.chmframwork.adapter.GirlDetailAdapter;
-import com.chm.chmframwork.network.RemoteHelper;
 import com.chm.chmframwork.base.BaseBackFragment;
-import com.chm.chmframwork.listener.OnItemClickListener;
 import com.chm.chmframwork.bean.GirlsBean;
+import com.chm.chmframwork.listener.OnItemClickListener;
+import com.chm.chmframwork.network.RemoteHelper;
+import com.chm.chmframwork.utils.ValueUtils;
 import com.chm.chmframwork.widget.WebViewFragment;
 import com.chm.framwork.utilcode.util.TimeUtils;
 import com.google.gson.internal.LinkedTreeMap;
@@ -52,12 +53,9 @@ public class GirlDetailFragment extends BaseBackFragment implements View.OnClick
     private String pic;
     private String day;
 
-    private Toolbar mToolbar;
     private ImageView mImgDetail;
-    private FloatingActionButton mFab;
 
     private List<Map<String, Object>> results = new ArrayList<>();
-    private RecyclerView mRecy;
     private GirlDetailAdapter mAdapter;
 
     public static GirlDetailFragment newInstance(GirlsBean.ResultsEntity girlsBean) {
@@ -92,9 +90,9 @@ public class GirlDetailFragment extends BaseBackFragment implements View.OnClick
     }
 
     private void initView(View view) {
-        mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
+        Toolbar mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
         mImgDetail = (ImageView) view.findViewById(R.id.img_detail);
-        mFab = (FloatingActionButton) view.findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
         mToolbar.setTitle("");
         initToolbarNav(mToolbar);
@@ -111,15 +109,15 @@ public class GirlDetailFragment extends BaseBackFragment implements View.OnClick
                     }
                 });
 
-        mFab.setOnClickListener(this);
+        fab.setOnClickListener(this);
 
-        mRecy = (RecyclerView) view.findViewById(R.id.recy);
+        RecyclerView recy = (RecyclerView) view.findViewById(R.id.recy);
         mAdapter = new GirlDetailAdapter(_mActivity);
         LinearLayoutManager manager = new LinearLayoutManager(_mActivity);
-        mRecy.setLayoutManager(manager);
+        recy.setLayoutManager(manager);
         //添加装饰类
-        mRecy.addItemDecoration(new DividerItemDecoration(_mActivity, 1));
-        mRecy.setAdapter(mAdapter);
+        recy.addItemDecoration(new DividerItemDecoration(_mActivity, 1));
+        recy.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position, View view, RecyclerView.ViewHolder vh) {
@@ -145,8 +143,8 @@ public class GirlDetailFragment extends BaseBackFragment implements View.OnClick
                     @Override
                     public void accept(@NonNull Map<String, Object> data) throws Exception {
                         results.clear();
-                        List<String> category = (List<String>) data.get("category");
-                        LinkedTreeMap<String, List<Map<String, Object>>> results_data = (LinkedTreeMap<String, List<Map<String, Object>>>) data.get("results");
+                        List<String> category = ValueUtils.getValue(data.get("category"), new ArrayList<String>());
+                        LinkedTreeMap<String, List<Map<String, Object>>> results_data = ValueUtils.getValue(data.get("results"), new LinkedTreeMap<String, List<Map<String, Object>>>());
                         for (int i = 0; i < category.size(); i++) {
                             String s = category.get(i);
                             List<Map<String, Object>> list = results_data.get(s);
