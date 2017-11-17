@@ -42,6 +42,7 @@ class WelcomePresenter implements WelcomePresenters {
                     @Override
                     public void onError(@NonNull Throwable e) {
                         view.showToast("加载闪屏页失败，可直接进入首页");
+                        view.btnVisibility(View.VISIBLE);
                     }
 
                     @Override

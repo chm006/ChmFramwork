@@ -286,6 +286,8 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
 
                     @Override
                     public void onError(@NonNull Throwable e) {
+                        mRefreshLayout.finishLoadmore();
+                        loading = false;
                     }
 
                     @Override
