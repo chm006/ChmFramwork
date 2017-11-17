@@ -8,19 +8,27 @@ import com.chm.framwork.fragmentation.SupportFragment;
  */
 public abstract class BaseMainFragment extends SupportFragment {
 
-    public void startNewFragment(SupportFragment toFragment) {
-        ((SupportFragment) getParentFragment()).start(toFragment);
+    public void startFragment(int index, SupportFragment toFragment) {
+        if (index < 1) {
+            start(toFragment);
+        } else {
+            SupportFragment supportFragment = (SupportFragment) getParentFragment();
+            for (int i = 1; i < index; i++) {
+                supportFragment = (SupportFragment) supportFragment.getParentFragment();
+            }
+            supportFragment.start(toFragment);
+        }
     }
 
-    public void startForResultNewFragment(SupportFragment toFragment, int requestCode) {
-        ((SupportFragment) getParentFragment()).startForResult(toFragment, requestCode);
-    }
-
-    public void startFragment(SupportFragment toFragment) {
-        start(toFragment);
-    }
-
-    public void startForResultFragment(SupportFragment toFragment, int requestCode) {
-        startForResult(toFragment, requestCode);
+    public void startForResultFragment(int index, SupportFragment toFragment, int requestCode) {
+        if (index < 1) {
+            startForResult(toFragment, requestCode);
+        } else {
+            SupportFragment supportFragment = (SupportFragment) getParentFragment();
+            for (int i = 1; i < index; i++) {
+                supportFragment = (SupportFragment) supportFragment.getParentFragment();
+            }
+            supportFragment.startForResult(toFragment, requestCode);
+        }
     }
 }

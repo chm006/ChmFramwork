@@ -126,7 +126,7 @@ public class GirlDetailFragment extends BaseBackFragment implements View.OnClick
                 Map<String, Object> item = results.get(position);
                 String desc = (String) item.get("desc");
                 String url = (String) item.get("url");
-                start(WebViewFragment.newInstance(desc, url));
+                startFragment(0, WebViewFragment.newInstance(desc, url));
             }
         });
     }

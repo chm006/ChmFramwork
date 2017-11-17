@@ -62,7 +62,7 @@ public class ContactsFragment extends BaseBackFragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startFragment(AddContactsFragment.newInstance());
+                startFragment(0, AddContactsFragment.newInstance());
             }
         });
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

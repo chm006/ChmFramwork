@@ -36,7 +36,7 @@ public class AvatarFragment extends BaseMainFragment implements View.OnClickList
         switch (v.getId()) {
             case R.id.iv_avatar:
                 //如果没有登陆
-                startNewFragment(LoginFragment.newInstance());
+                startFragment(2, LoginFragment.newInstance());
                 break;
         }
     }

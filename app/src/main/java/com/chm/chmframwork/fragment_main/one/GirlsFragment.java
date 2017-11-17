@@ -1,6 +1,5 @@
 package com.chm.chmframwork.fragment_main.one;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.Fade;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +19,6 @@ import com.chm.chmframwork.adapter.GirlsAdapter;
 import com.chm.chmframwork.base.BaseMainFragment;
 import com.chm.chmframwork.bean.GirlsBean;
 import com.chm.chmframwork.fragment_back.GirlDetailFragment;
-import com.chm.chmframwork.fragment_main.one.helper.DetailTransition;
 import com.chm.chmframwork.listener.OnItemClickListener;
 import com.chm.chmframwork.network.RemoteHelper;
 import com.chm.chmframwork.widget.swipe.SwipeRefreshLoadLayout;
@@ -140,7 +137,7 @@ public class GirlsFragment extends BaseMainFragment implements SwipeRefreshLoadL
                 } else {
                     startNewFragment(fragment);
                 }*/
-                startNewFragment(fragment);
+                startFragment(1, fragment);
             }
         });
 

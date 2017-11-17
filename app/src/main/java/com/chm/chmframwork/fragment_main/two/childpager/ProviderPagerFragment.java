@@ -56,7 +56,7 @@ public class ProviderPagerFragment extends BaseMainFragment implements AdapterVi
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         switch (position) {
             case 0:
-                startNewFragment(ContactsFragment.newInstance());
+                startFragment(2, ContactsFragment.newInstance());
                 break;
         }
     }
